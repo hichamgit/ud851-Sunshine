@@ -17,20 +17,24 @@ package com.example.android.sunshine;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     // TODO (1) Create a field to store the weather display TextView
-
+    TextView weatherTextView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
 
         // TODO (2) Use findViewById to get a reference to the weather display TextView
-
+        weatherTextView = (TextView) findViewById(R.id.tv_weather_data);
         // TODO (3) Create an array of Strings that contain fake weather data
-
+        String[] weathers = {"Sunny","Haizy","Fuggy","Raining","Sunny","Haizy","Fuggy","Raining","Sunny","Haizy","Fuggy","Raining","Sunny","Haizy","Fuggy","Raining"};
         // TODO (4) Append each String from the fake weather data array to the TextView
+        for (String w:weathers) {
+            weatherTextView.append(w+"\n\n");
+        }
     }
 }
