@@ -17,7 +17,7 @@ import java.util.zip.Inflater;
 // done (15) Add a class file called ForecastAdapter
 // done (22) Extend RecyclerView.Adapter<ForecastAdapter.ForecastAdapterViewHolder>
 // done (23) Create a private string array called mWeatherData
-// TODO (47) Create the default constructor (we will pass in parameters in a later lesson)
+// done (47) Create the default constructor (we will pass in parameters in a later lesson)
 // done (16) Create a class within ForecastAdapter called ForecastAdapterViewHolder
 // done (17) Extend RecyclerView.ViewHolder
 
@@ -25,6 +25,11 @@ import java.util.zip.Inflater;
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapterViewHolder> {
 
     private String[] mWeatherData;
+
+    public ForecastAdapter() {
+
+    }
+
     class ForecastAdapterViewHolder extends RecyclerView.ViewHolder{
         // Within ForecastAdapterViewHolder ///////////////////////////////////////////////////////////
         // done (18) Create a public final TextView variable called mWeatherTextView
@@ -32,7 +37,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         // done (20) Call super(view) within the constructor for ForecastAdapterViewHolder
         // done (21) Using view.findViewById, get a reference to this layout's TextView and save it to mWeatherTextView
 
-        public final TextView mWeatherTextView = null;
+        public final TextView mWeatherTextView;
 
         public ForecastAdapterViewHolder(View itemView) {
             super(itemView);
@@ -46,7 +51,8 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     public ForecastAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.forecast_list_item,parent);
+        boolean attchedImmediately = false;
+        View view = inflater.inflate(R.layout.forecast_list_item,parent, attchedImmediately);
         return new ForecastAdapterViewHolder(view);
     }
 
@@ -57,8 +63,6 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
     @Override
     public int getItemCount() {
-        int mWeatherDataSize = mWeatherData.length;
-
         return (mWeatherData ==null ) ? 0 : mWeatherData.length;
         //Return 0 if mWeatherData is null, or the size of mWeatherData if it is not null
     }
