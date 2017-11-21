@@ -24,10 +24,10 @@ import android.provider.BaseColumns;
 public class WeatherContract {
 
 //  TODO done (1) Within WeatherContract, create a public static final class called WeatherEntry that implements BaseColumns
-    public static final class WeatherEntry implements BaseColumns{
+    public static final class WeatherEntry implements BaseColumns {
         //      Do steps 2 through 10 within the WeatherEntry class
         //      TODO done (2) Create a public static final String call TABLE_NAME with the value "weather"
-        public static final String TABLE_NAME = "weather";
+        public static final String TABLE_NAME = "weather2";
         //      TODO done (3) Create a public static final String call COLUMN_DATE with the value "date"
         public static final String COLUMN_DATE = "date";
         //      TODO done (4) Create a public static final String call COLUMN_WEATHER_ID with the value "weather_id"
