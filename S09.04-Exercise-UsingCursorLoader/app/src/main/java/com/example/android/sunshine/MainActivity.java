@@ -47,17 +47,30 @@ import java.net.URL;
 
 
 public class MainActivity extends AppCompatActivity implements
-//      TODO (15) Remove the implements declaration for SharedPreferences change listener and methods
+//      TODO done (15) Remove the implements declaration for SharedPreferences change listener and methods
 //      TODO (20) Implement LoaderCallbacks<Cursor> instead of String[]
         ForecastAdapter.ForecastAdapterOnClickHandler,
-        LoaderManager.LoaderCallbacks<String[]>,
-        SharedPreferences.OnSharedPreferenceChangeListener {
+        LoaderManager.LoaderCallbacks<String[]>
+        /*,SharedPreferences.OnSharedPreferenceChangeListener*/ {
 
     private final String TAG = MainActivity.class.getSimpleName();
 
-//  TODO (16) Create a String array containing the names of the desired data columns from our ContentProvider
+//  TODO done (16) Create a String array containing the names of the desired data columns from our ContentProvider
+    String[] columns = {
+                        WeatherContract.WeatherEntry.COLUMN_DATE,
+                        WeatherContract.WeatherEntry.COLUMN_MIN_TEMP,
+                        WeatherContract.WeatherEntry.COLUMN_MAX_TEMP
+                        };
 
 //  TODO (17) Create constant int values representing each column name's position above
+    public static final int INDEX_WEATHER_DATE = 1;
+    public static final int INDEX_WEATHER_MAX_TEMP = 2;
+    public static final int INDEX_WEATHER_MIN_TEMP = 3;
+    public static final int INDEX_WEATHER_DESCRIPTION = 4;
+    public static final int INDEX_WEATHER_HIGH_TEMP = 5;
+    public static final int INDEX_WEATHER_LOW_TEMP = 6;
+
+    public static final int INDEX_WEATHER_DESCRIPTION = 6;
 
 //  TODO (37) Remove the error TextView
     private TextView mErrorMessageDisplay;
@@ -135,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements
          */
         mRecyclerView.setHasFixedSize(true);
 
-//      TODO (4) Pass in this again as the ForecastAdapter now requires a Context
+//      TODO done (4) Pass in this again as the ForecastAdapter now requires a Context
         /*
          * The ForecastAdapter is responsible for linking our weather data with the Views that
          * will end up displaying our weather data.
@@ -146,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements
          * MainActivity implements the ForecastAdapter ForecastOnClickHandler interface, "this"
          * is also an instance of that type of handler.
          */
-        mForecastAdapter = new ForecastAdapter(this);
+        mForecastAdapter = new ForecastAdapter(this, this);
 
         /* Setting the adapter attaches it to the RecyclerView in our layout. */
         mRecyclerView.setAdapter(mForecastAdapter);
